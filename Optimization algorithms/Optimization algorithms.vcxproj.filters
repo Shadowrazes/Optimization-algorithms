@@ -21,7 +21,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Optimization algorithms.cpp">
+    <ClCompile Include="OptimizationAlgorithms.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="SimpleFraction\SimpleFraction.cpp">

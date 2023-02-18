@@ -1,3 +1,11 @@
+﻿//-------------------------------------------------------------------------------------------
+// JordanGauss.h
+// Description: Класс, реализующий алгоритм Жордана-Гаусса для решения СЛАУ
+// Date: 31.01.2023
+// Authors: Хьюго М.А. & Наумов Н.В.
+// Ⓒ Sibsutis university
+//-------------------------------------------------------------------------------------------
+
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -7,23 +15,33 @@
 
 #include "../SimpleFraction/SimpleFraction.h"
 
+typedef std::vector<std::vector<Fraction::SimpleFraction>> FractionMatrix;
+
 namespace LinearEquations {
 class JordanGauss {
 public:
 	JordanGauss();
 
-	void Process();
-	void LineAdditional(int firstLine, int secondLine, int column);
-	void LineDivision(int lineNum, int dividerInd);
-	void DeleteZeroLines();
-	bool CheckFalseEqualities();
-	void Finishing();
-	bool FindAndSwapMaxColumnElem(int lineNum, int columnNum);
+	void Process(FractionMatrix& matrix);
 
-	void ReadMatrixFromFile(std::string fileName = "JordanGauss\\Matrix.txt");
-	void PrintMatrix();
+	void FindBasicSolutions();
+
+	FractionMatrix ReadMatrixFromFile(std::string fileName = "JordanGauss\\Matrix.txt");
+	void PrintMatrix(FractionMatrix& matrix);
 protected:
 	int m_variablesCount = 0;
-	std::vector<std::vector<Fraction::SimpleFraction>> m_matrix;
+	FractionMatrix m_matrix;
+	std::vector<Fraction::SimpleFraction> m_result;
+
+	void LineAdditional(FractionMatrix& matrix, int firstLine, int secondLine, int column);
+	void LineDivision(FractionMatrix& matrix, int lineNum, int dividerInd);
+	bool DeleteZeroLines(FractionMatrix& matrix);
+	bool CheckFalseEqualities(FractionMatrix& matrix);
+	void Finishing(FractionMatrix& matrix);
+	bool FindAndSwapMaxColumnElem(FractionMatrix& matrix, int lineNum, int columnNum);
+
+	FractionMatrix ExtractMatrixWithIncludedVariables(std::vector<int>& columnInds);
+	std::vector<std::vector<int>> CombinationsWithoutRepeats(int n, int k);
+	void SolutionVerification(FractionMatrix& matrix, FractionMatrix& solutions);
 };
 }

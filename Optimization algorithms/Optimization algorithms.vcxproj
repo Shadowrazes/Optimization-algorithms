@@ -128,7 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="JordanGauss\JordanGauss.cpp" />
-    <ClCompile Include="Optimization algorithms.cpp" />
+    <ClCompile Include="OptimizationAlgorithms.cpp" />
     <ClCompile Include="SimpleFraction\SimpleFraction.cpp" />
   </ItemGroup>
   <ItemGroup>

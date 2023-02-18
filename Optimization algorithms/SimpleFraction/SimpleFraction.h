@@ -14,15 +14,15 @@ namespace Fraction {
 class SimpleFraction {
 public:
 	SimpleFraction();
-	SimpleFraction(int divisible, int divider);
+	SimpleFraction(long long divisible, long long divider);
 
 	void Reduction();
 	
-	void SetDivisible(int divisible) { m_divisible = divisible; }
-	int  GetDivisible() const { return m_divisible; }
+	void SetDivisible(long long divisible) { m_divisible = divisible; }
+	long long  GetDivisible() const { return m_divisible; }
 
-	void SetDivider(int divider) { m_divider = divider; }
-	int  GetDivider() const { return m_divider; }
+	void SetDivider(long long divider) { m_divider = divider; }
+	long long  GetDivider() const { return m_divider; }
 
 	bool IsOne() const { return m_divisible == m_divider; }
 	bool IsZero() const { return m_divisible == 0; }
@@ -47,11 +47,11 @@ public:
 	friend bool operator< (SimpleFraction first, SimpleFraction second);
 
 protected:
-	int m_divisible;	// Делимое
-	int m_divider;		// Делитель
+	long long m_divisible;	// Делимое
+	long long m_divider;	// Делитель
 
-	static int	NOD(int a, int b);
-	static int	NOK(int a, int b);
+	static long long NOD(long long a, long long b);
+	static long long NOK(long long a, long long b);
 };
 
 inline std::ostream& operator<< (std::ostream& out, const SimpleFraction& fraction) {

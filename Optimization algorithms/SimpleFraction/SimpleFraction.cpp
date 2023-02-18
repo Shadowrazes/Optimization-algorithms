@@ -8,12 +8,12 @@ SimpleFraction::SimpleFraction() {
 	m_divider = 1;
 }
 //-----------------------------------------------------------------------------------
-SimpleFraction::SimpleFraction(int divisible, int divider) {
+SimpleFraction::SimpleFraction(long long divisible, long long divider) {
 	m_divisible = divisible;
 	m_divider = divider;
 }
 //-----------------------------------------------------------------------------------
-int SimpleFraction::NOD(int a, int b) {
+long long SimpleFraction::NOD(long long a, long long b) {
     if (a < b) {
         std::swap(a, b);
     }
@@ -24,7 +24,7 @@ int SimpleFraction::NOD(int a, int b) {
     return b;
 }
 //-----------------------------------------------------------------------------------
-int SimpleFraction::NOK(int a, int b) {
+long long SimpleFraction::NOK(long long a, long long b) {
     return a * b / NOD(a, b);
 }
 //-----------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ void SimpleFraction::Reduction() {
         return;
     }
 
-    int nod = NOD(m_divisible, m_divider);
+    long long nod = NOD(m_divisible, m_divider);
 
     if (m_divisible % nod != 0 || m_divider % nod != 0) {
         return;
@@ -60,10 +60,10 @@ void SimpleFraction::Reduction() {
 }
 //-----------------------------------------------------------------------------------
 void SimpleFraction::ToDivider(SimpleFraction& first, SimpleFraction& second) {
-    int destination = NOK(first.m_divider, second.m_divider);
+    long long destination = NOK(first.m_divider, second.m_divider);
 
-    int firstCoef = destination / first.m_divider;
-    int secondCoef = destination / second.m_divider;
+    long long firstCoef = destination / first.m_divider;
+    long long secondCoef = destination / second.m_divider;
 
     first.m_divisible *= firstCoef;
     first.m_divider *= firstCoef;
